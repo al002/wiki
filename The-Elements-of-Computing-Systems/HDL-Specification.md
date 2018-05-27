@@ -55,5 +55,29 @@ v 就是 internal pin ，internal pin 可以有一个输入和无数个输出，
 **buses:**
 input, output, internal pin 都可能是 multi-bit bus
 
-input, output pin 的位宽在 chip header 里声明了，internal pin 则是隐式推导出来的
+input, output pin 的位宽在 chip header 里声明了，internal pin 的位宽则是隐式推导出来的
+
+
+**Built-In Chips**
+three special services:
+
+1. Foundation
+2. Certification and efficiency
+3. Visualization
+
+
+**Sequential Chips**
+电脑芯片要么是组合逻辑（combinational），要么是时序逻辑（sequential, clocked）。
+
+combinational 芯片的操作是瞬时的，sequential 的是由时钟控制的，需要等到下一个时间单位开始。
+
+sequential 芯片也可能在时间改变但 input 没有任何改变的情况下修改 output 值，而 combinational 的不会因为时间的改变而改变值。
+
+**时钟（The Clock）**
+时间进展由 tick 和 tock 两个操作来支持，它们用来模拟一系列的 *time unit （时间单位）*。time unit 有两个阶段：tick 结束一个时间单位第一个阶段的结束，并开始第二个阶段；tock 表明下一个时间单位第一个阶段的开始。
+
+*真实时间的流逝与模拟目的无关*。即可以完成用 tick tock 来控制生成一系列的模拟 time unit。
+
+tick 阶段读取值，影响 chip 的内部状态；
+tock 阶段才会把新的值写入到 output 内。
 
