@@ -81,3 +81,6 @@ sequential 芯片也可能在时间改变但 input 没有任何改变的情况�
 tick 阶段读取值，影响 chip 的内部状态；
 tock 阶段才会把新的值写入到 output 内。
 
+**clocked property of chips**
+chip 是否有 clocked 属性是递归检查的，如果有依赖的 chip 是 clocked，那么这个 chip 也是 clocked 的
+
